@@ -16,7 +16,11 @@ exports.httpGetCoinexOrderBooks = httpGetCoinexOrderBooks;
 const axios_1 = __importDefault(require("axios"));
 const https_proxy_agent_1 = require("https-proxy-agent");
 const symbols_1 = __importDefault(require("../../symbols/symbols"));
-const agent = new https_proxy_agent_1.HttpsProxyAgent("http://127.0.0.1:10808");
+const proxyUrl = process.env.PROXYURL;
+const proxyPort = process.env.PROXYPORT || "10808";
+const proxyUser = process.env.PROXYUSER || "root";
+const proxyPass = process.env.PROXYPASS || "12345";
+const agent = new https_proxy_agent_1.HttpsProxyAgent('http://' + proxyUser + ':' + proxyPass + '@' + proxyUrl + ':' + proxyPort);
 const coinBaseUrl = new URL("https://api.coinex.com/v2/");
 const coinInstance = axios_1.default.create({
     baseURL: coinBaseUrl.toString(),
