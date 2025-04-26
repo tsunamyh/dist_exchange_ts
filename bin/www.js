@@ -13,7 +13,7 @@ require("dotenv/config");
 const server_1 = require("../server");
 const pricecontroller_1 = require("../component/pricecontroller");
 const exController_1 = require("../component/exController");
-const port = Number(process.env.PORT) || 3015;
+const port = Number(process.env.PORT) || 3000;
 function start() {
     return __awaiter(this, void 0, void 0, function* () {
         server_1.server.listen(port, () => {
